@@ -1,17 +1,26 @@
 <template>
-    <h1>Hello {{ status }}</h1>
+    <div class="container">
+        <div class="row">
+            <div>
+                <app-user></app-user>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
-export default {
-  data: function () {
-    return {
-      status: 'kvnfv'
+    import User from './components/User.vue';
+
+    export default {
+        components: {
+            appUser: User
+        }
     }
-  }
-}
 </script>
 
-<style lang="scss">
-
+<style>
+    div.component {
+        border: 1px solid black;
+        padding: 30px;
+    }
 </style>
