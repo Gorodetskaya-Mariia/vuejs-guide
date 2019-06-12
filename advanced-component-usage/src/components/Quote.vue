@@ -1,15 +1,16 @@
 <template>
-  <div>
-    <div class="title">
-      <slot name="title"></slot>
-      <span>
-        <slot name="subtitle">The Subtitle</slot>
-        </span>
-    </div>
-    <div>
-      <slot name="content"></slot>
-    </div>
+<div>
+  <div class="title">
+    <slot name="title"></slot>
+    <span>
+      <slot name="subtitle">The Subtitle</slot>
+      </span>
   </div>
+  <div>
+    <!-- <slot name="content"></slot> -->
+     <slot></slot>
+  </div>
+</div>
 
 </template>
 
