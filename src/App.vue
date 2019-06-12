@@ -23,4 +23,12 @@
         border: 1px solid black;
         padding: 30px;
     }
+
+   button {
+      padding: 5px;
+      margin-bottom: 25px;
+      background-color: transparent;
+      border: 1px solid black;
+      border-radius: 5px;
+    }
 </style>

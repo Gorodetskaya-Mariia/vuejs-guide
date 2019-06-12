@@ -2,12 +2,21 @@
     <div class="component">
         <h1>The User Component</h1>
         <button @click="changeName">Change my Name</button>
+        <p>User Age: {{ age }}</p>
         <div class="row">
             <div class="column-left">
-                <app-user-detail :name="name" @nameWasReset="name= $event"></app-user-detail>
+                <app-user-detail
+                   :name="name"
+                   @nameWasReset="name = $event"
+                   :resetFn="resetName"
+                   :userAge="age"
+                ></app-user-detail>
             </div>
             <div class="column-right">
-                <app-user-edit></app-user-edit>
+                <app-user-edit
+                   :userAge="age"
+                   @ageWasEdited="age = $event"
+                ></app-user-edit>
             </div>
         </div>
     </div>
@@ -20,12 +29,16 @@
     export default {
       data: function() {
         return {
-          name: "Mariia"
+          name: "Mariia",
+          age: "28"
         }
       },
       methods: {
         changeName() {
           this.name = "Anna"
+        },
+        resetName() {
+          this.name = "Mariia"
         }
       },
         components: {
@@ -41,16 +54,10 @@
     }
     div.row {
       display: flex;
+      justify-content: space-between;
     }
     .column-left,
     .column-right {
-      width: 50%;
-    }
-    button {
-      padding: 5px;
-      margin-bottom: 25px;
-      background-color: transparent;
-      border: 1px solid black;
-      border-radius: 5px;
+      width: 48%;
     }
 </style>
