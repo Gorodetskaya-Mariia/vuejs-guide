@@ -16,6 +16,7 @@
                 <p v-highlight:color="'aqua'">Color - with argument</p>
                 <p v-highlight:color.delayed="'grey'">Color - with modifier: delay</p>
                 <p v-local-highlight:color="'black'">Color - locally</p>
+                <p v-local-highlight:color.delayed.blink="{mainColor: 'black', secondColor: 'green', delay:'500'}">Color - using multiple modifiers with complex values locally</p>
             </div>
         </div>
     </div>
@@ -26,7 +27,22 @@
       directives: {
         'local-highlight': {
           bind(el, binding, vnode){
-            el.style.color = binding.value;
+            var delay = 0;
+
+            if(binding.modifiers['delayed']) delay = 2000;
+
+            if(binding.modifiers['blink']){
+              let mainColor = binding.value.mainColor,
+                  secondColor = binding.value.secondColor,
+                  currentColor = mainColor;
+
+              setTimeout(() => {
+                setInterval(() => {
+                  currentColor == secondColor ? currentColor = mainColor : currentColor = secondColor;
+                  el.style.color = currentColor;
+                }, binding.value.delay);
+              }, delay);
+            }
           }
         }
       }
