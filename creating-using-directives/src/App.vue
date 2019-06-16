@@ -15,6 +15,7 @@
                 <p v-highlight="'red'">Color - using binding, without argument</p>
                 <p v-highlight:color="'aqua'">Color - with argument</p>
                 <p v-highlight:color.delayed="'grey'">Color - with modifier: delay</p>
+                <p v-local-highlight:color="'black'">Color - locally</p>
             </div>
         </div>
     </div>
@@ -22,6 +23,13 @@
 
 <script>
     export default {
+      directives: {
+        'local-highlight': {
+          bind(el, binding, vnode){
+            el.style.color = binding.value;
+          }
+        }
+      }
     }
 </script>
 
