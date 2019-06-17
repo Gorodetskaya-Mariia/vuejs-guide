@@ -13,7 +13,7 @@
   export default {
     mixins: [fruitMixin],
     created() {
-      console.log('List inside Created Hook');
+      console.log('inside list Created Hook');
     }
   }
 </script>
