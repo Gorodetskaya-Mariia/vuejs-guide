@@ -26,7 +26,7 @@
       components: {
         appList: List
       },
-      mixins: [fruitMixin]
+      mixins: [fruitMixin],
     }
 </script>
 
