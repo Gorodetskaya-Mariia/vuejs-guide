@@ -1,5 +1,5 @@
 {
-  "name": "vuejs-guide",
+  "name": "animations-and-transitions",
   "description": "A Vue.js project",
   "version": "1.0.0",
   "author": "Mariia <1907mss@gmail.com>",
@@ -25,8 +25,6 @@
     "cross-env": "^5.0.5",
     "css-loader": "^3.0.0",
     "file-loader": "^1.1.4",
-    "node-sass": "^4.5.3",
-    "sass-loader": "^6.0.6",
     "vue-loader": "^13.0.5",
     "vue-template-compiler": "^2.4.4",
     "webpack": "^3.6.0",
