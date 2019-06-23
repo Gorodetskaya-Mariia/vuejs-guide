@@ -28,6 +28,21 @@
                   <div class="alert alert-info" v-if="show" key="info">This is some info</div>
                   <div class="alert alert-warning" v-else key="warning">This is some warning</div>
                 </transition>
+								<hr>
+								<button class="btn btn-primary" @click="load = !load">Load / Remove element</button>
+								<br>
+								<transition
+									@before-enter="beforeEnter"
+									@enter="enter"
+									@after-enter="afterEnter"
+									@enter-cancelled="enterCancelled"
+
+									@before-leave="beforeLeave"
+									@leave="leave"
+									@after-leave="afterLeave"
+									@leave-cancelled="leaveCancelled">
+									<div class="square" v-if="load"></div>
+								</transition>
             </div>
         </div>
     </div>
@@ -38,9 +53,54 @@
         data() {
             return {
 							show: true,
-              alertAnimation: 'fade'
+              alertAnimation: 'fade',
+							load: true
             }
-        }
+        },
+				methods: {
+					beforeEnter(el) {
+						this.elementWidth = 100;
+						el.style.width = this.elementWidth + "px";
+					},
+					enter(el, done) {
+						let round = 1;
+						const interval = setInterval(() => {
+							el.style.width = (this.elementWidth + round*10) + "px";
+							round++;
+							if(round > 20){
+								clearInterval(interval);
+								done();
+							}
+						}, 20);
+					},
+					afterEnter(el) {
+
+					},
+					enterCancelled(el) {
+
+					},
+					beforeLeave(el) {
+						this.elementWidth = 300;
+						el.style.width = this.elementWidth + "px";
+					},
+					leave(el, done) {
+						let round = 1;
+						const interval = setInterval(() => {
+							el.style.width = (this.elementWidth - round*10) + "px";
+							round++;
+							if(round > 20){
+								clearInterval(interval);
+								done();
+							}
+						}, 20);
+					},
+					afterLeave(el) {
+
+					},
+					leaveCancelled(el) {
+
+					},
+				}
     }
 </script>
 
@@ -84,6 +144,12 @@
     transition: opacity 3s;
     opacity: 0;
   }
+
+	.square {
+		width: 300px;
+		height: 100px;
+		background-color: aqua;
+	}
 
   @keyframes slide-in {
     from {
