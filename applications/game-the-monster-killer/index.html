@@ -46,16 +46,40 @@
         </div>
     </section>
     <section class="row log" v-if="turns.length > 0">
-        <div class="small-12 columns">
+        <div class="small-12 columns" style="text-transform: uppercase">
+          Statistics
             <ul>
-                <li v-for="turn in turns"
-                    :class="{'player-turn': turn.isPlayer, 'monster-turn': !turn.isPlayer}">
-                    {{ turn.text }}
-                </li>
+              <transition-group name="slide" mode="out-in" type="animation">
+                  <li v-for="turn in turns"
+                  :class="{'player-turn': turn.isPlayer, 'monster-turn': !turn.isPlayer}"
+                  :key="turn">
+                  {{ turn.text }}
+              </li>
+              </transition-group>
             </ul>
         </div>
     </section>
 </div>
 <script src="src/app.js"></script>
+<style>
+  .slide-enter-active {
+    animation: slide-in 1s ease-in-out forwards;
+  }
+
+  .slide-move {
+    transition: transform, opacity, 1s;
+  }
+
+  @keyframes slide-in {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+</style>
 </body>
 </html>
