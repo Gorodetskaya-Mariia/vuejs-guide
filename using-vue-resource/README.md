@@ -1,6 +1,5 @@
 # using-vue-resource
 
-> A Vue.js project
 
 ## Build Setup
 
@@ -16,3 +15,7 @@ npm run build
 ```
 
 For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+## Sources
+vue-resource https://github.com/pagekit/vue-resource
+setting up a server https://firebase.google.com/
