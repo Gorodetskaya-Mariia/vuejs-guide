@@ -40,7 +40,8 @@
 									@before-leave="beforeLeave"
 									@leave="leave"
 									@after-leave="afterLeave"
-									@leave-cancelled="leaveCancelled">
+									@leave-cancelled="leaveCancelled"
+									:css="false">
 									<div class="square" v-if="load"></div>
 								</transition>
             </div>
