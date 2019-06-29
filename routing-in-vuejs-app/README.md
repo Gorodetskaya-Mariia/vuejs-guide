@@ -1,4 +1,4 @@
-# vue-router
+# routing-in-vuejs-app
 
 > A Vue.js project
 
