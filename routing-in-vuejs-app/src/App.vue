@@ -7,6 +7,7 @@
                 <transition name="slide" mode="out-in">
                   <router-view></router-view>
                 </transition>
+                <hr>
                 <router-view name="header-bottom"></router-view>
             </div>
         </div>
