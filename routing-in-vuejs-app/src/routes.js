@@ -4,6 +4,7 @@ import UserDetail from './components/user/UserDetail.vue';
 import UserEdit from './components/user/UserEdit.vue';
 import Home from './components/Home.vue';
 import Header from './components/Header.vue';
+import Error from './components/Error.vue';
 
 
 export const routes = [
@@ -19,5 +20,7 @@ export const routes = [
     { path: ':id', component: UserDetail },
     { path: ':id/edit', component: UserEdit, name: 'userEdit' },
   ] },
-  { path: '/redirect-me', redirect: { name: 'home' } }
+  { path: '/redirect-me', redirect: { name: 'home' } },
+  { path: '*', component: Error }
+  // or i can redirect to home page: path: '*', redirect: '/'
 ];
