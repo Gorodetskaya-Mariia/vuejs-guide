@@ -8,6 +8,7 @@
 
 <script>
   import axios from 'axios';
+
   export default {
     data() {
       return {
@@ -15,7 +16,8 @@
       }
     },
     created() {
-      axios.get('https://using-axios-e30c4.firebaseio.com/users.json')
+
+      axios.get('users.json')
         .then(res => {
           console.log(res);
           const data = res.data;
