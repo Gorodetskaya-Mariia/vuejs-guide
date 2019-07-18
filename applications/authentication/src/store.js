@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from 'axios'
+import axios from './axios-auth'
 
 Vue.use(Vuex)
 
@@ -20,7 +20,7 @@ export default new Vuex.Store({
         returnSecureToken: true
       })
         .then(res => console.log(res))
-        .catch(error => console.log(error));
+        .catch(error => console.log(error.response));
     },
     login({commit}, authData) {
       axios.post('/verifyPassword?key=AIzaSyB2h7vWlw0kDhxJqtFZjrhXCcgi7NvQyc4',{

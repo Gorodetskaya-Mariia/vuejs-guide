@@ -93,6 +93,7 @@
         this.hobbyInputs = this.hobbyInputs.filter(hobby => hobby.id !== id)
       },
       onSubmit () {
+        console.log('submitted')
         const formData = {
           email: this.email,
           age: this.age,
@@ -103,6 +104,10 @@
           terms: this.terms
         }
         console.log(formData);
+        this.$store.dispatch('signup', {
+          email: formData.email,
+          password: formData.password
+        });
       }
     }
   }

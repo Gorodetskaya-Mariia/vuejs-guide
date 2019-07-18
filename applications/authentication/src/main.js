@@ -5,8 +5,7 @@ import axios from 'axios'
 import router from './router'
 import store from './store'
 
-axios.defaults.baseURL = 'https://using-axios-e30c4.firebaseio.com/';
-axios.defaults.headers.common['Authorization'] = 'jvhjf';
+axios.defaults.baseURL = 'https://using-axios-e30c4.firebaseapp.com';
 axios.defaults.headers.get['Accepts'] = 'applications/json';
 
 const reqInterceptor = axios.interceptors.request.use(config => {
