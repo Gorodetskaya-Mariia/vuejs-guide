@@ -11,6 +11,8 @@
     name: 'app',
     components: {
       'app-header': Header
+    },
+    created () {
     }
   }
 </script>

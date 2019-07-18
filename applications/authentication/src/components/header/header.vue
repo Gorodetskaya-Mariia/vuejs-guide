@@ -19,6 +19,17 @@
   </header>
 </template>
 
+<script>
+  export default {
+    computed: {
+
+    },
+    methods: {
+
+    }
+  }
+</script>
+
 <style scoped>
   #header {
     height: 56px;
@@ -67,5 +78,13 @@
   li a:active,
   li a.router-link-active {
     color: #fa923f;
+  }
+
+  .logout {
+    background-color: transparent;
+    border: none;
+    font: inherit;
+    color: white;
+    cursor: pointer;
   }
 </style>
