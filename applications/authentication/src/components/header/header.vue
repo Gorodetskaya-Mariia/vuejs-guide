@@ -14,6 +14,9 @@
         <li v-if="auth">
           <router-link to="/dashboard">Dashboard</router-link>
         </li>
+        <li v-if="auth">
+          <button @click="onLogout" class="logout">Logout</button>
+        </li>
       </ul>
     </nav>
   </header>
@@ -27,7 +30,9 @@
       }
     },
     methods: {
-
+      onLogout() {
+        this.$store.dispatch('logout');
+      }
     }
   }
 </script>
