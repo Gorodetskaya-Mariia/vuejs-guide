@@ -11,8 +11,6 @@
                   v-model="email">
           <p v-if="!$v.email.email">Please provide a valid email address.</p>
           <p v-if="!$v.email.required">This field must not be empty.</p>
-          <!-- <p v-if="$v.email.$error">Please provide a valid email address.</p> -->
-          <!-- @input="$v.email.$touch() -->
         </div>
         <div class="input" :class="{invalid: $v.age.$error}">
           <label for="age">Your Age</label>
@@ -21,7 +19,7 @@
                   id="age"
                   @blur="$v.age.$touch()"
                   v-model.number="age">
-          <p v-if="!$v.age.minAge">You have to be at least {{ $v.age.$params.minAge.min }}</p>
+          <p v-if="!$v.age.minVal">You have to be at least {{ $v.age.$params.minVal.min }} years old.</p>
         </div>
         <div class="input" :class="{invalid: $v.password.$error}">
           <label for="password">Password</label>
@@ -69,7 +67,7 @@
             <p v-if="!$v.hobbyInputs.required">Please add hobbies.</p>
           </div>
         </div>
-       <div class="input inline" :class="{invalid: $v.terms.$invalid}">
+        <div class="input inline" :class="{invalid: $v.terms.$invalid}">
           <input
                   type="checkbox"
                   id="terms"
@@ -87,6 +85,7 @@
 
 <script>
   import { required, email, numeric, minValue, minLength, sameAs, requiredUnless } from 'vuelidate/lib/validators'
+  import axios from 'axios'
 
   export default {
     data () {
@@ -101,22 +100,28 @@
       }
     },
     validations: {
-      //every name should be from v-model of every input
       email: {
         required,
-        email
+        email,
+        unique: val => {
+          if (val === '') return true
+          return axios.get('/users.json?orderBy="email"&equalTo="' + val + '"')
+            .then(res => {
+              return Object.keys(res.data).length === 0
+            })
+        }
       },
       age: {
         required,
         numeric,
-        minAge: minValue(18)
+        minVal: minValue(18)
       },
       password: {
         required,
         minLen: minLength(6)
       },
       confirmPassword: {
-        // sameAs: sameAs('password')
+//        sameAs: sameAs('password')
         sameAs: sameAs(vm => {
           return vm.password
         })
@@ -206,13 +211,13 @@
     background-color: #eee;
   }
 
-  .input.invalid input {
-    border: 1px solid red;
-    background-color: palevioletred;
-  }
-
   .input.invalid label {
     color: red;
+  }
+
+  .input.invalid input {
+    border: 1px solid red;
+    background-color: #ffc9aa;
   }
 
   .input select {
